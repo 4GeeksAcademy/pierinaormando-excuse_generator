@@ -1,31 +1,26 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const who = ["The dog", "My grandma", "His turtle", "My bird"];
-  const action = ["ate", "peed", "crushed", "broke"];
-  const what = ["my homework", "the keys", "the car"];
-  const when = [
-    "before the class",
-    "right on time",
-    "when I finished",
-    "during my lunch",
-    "while I was praying"
-  ];
+window.onload = function() {
+  //funcion para generar una excusa aleatoria
+  function generateExcuse() {
+    let who = ["The dog", "My grandma", "His turtle", "My bird"];
+    let action = ["ate", "peed", "crushed", "broke"];
+    let what = ["my homework", "the keys", "the car"];
+    let when = [
+      "before the class",
+      "right on time",
+      "when I finished",
+      "during my lunch",
+      "while I was praying"
+    ];
 
-  const generateExcuseButton = document.getElementById("generateExcuse");
-  //p que contiene el#excusa
-  const excuseParagraph = document.getElementById("excuse");
+    let randomWho = who[Math.floor(Math.random() * who.length)];
+    let randomAction = action[Math.floor(Math.random() * action.length)];
+    let randomWhat = what[Math.floor(Math.random() * what.length)];
+    let randomWhen = when[Math.floor(Math.random() * when.length)];
 
-  function generateRandomExcuse() {
-    const randomWho = who[Math.floor(Math.random() * who.length)];
-    const randomAction = action[Math.floor(Math.random() * action.length)];
-    const randomWhat = what[Math.floor(Math.random() * what.length)];
-    const randomWhen = when[Math.floor(Math.random() * when.length)];
-
-    const excuse = `${randomWho} ${randomAction} ${randomWhat} ${randomWhen}`;
-    return excuse;
+    return `${randomWho} ${randomAction} ${randomWhat} ${randomWhen}`;
   }
 
-  generateExcuseButton.addEventListener("click", function() {
-    const randomExcuse = generateRandomExcuse();
-    excuseParagraph.innerHTML = randomExcuse;
-  });
-});
+  // excusa generada en el p con id #excuse
+  console.log(generateExcuse());
+  document.getElementById("excuse").innerHTML = generateExcuse();
+};
